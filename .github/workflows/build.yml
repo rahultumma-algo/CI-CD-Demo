@@ -51,4 +51,4 @@ jobs:
           branch: gh-pages
           folder: build
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.TOKEN_ID }}
