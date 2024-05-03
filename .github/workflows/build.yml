@@ -37,13 +37,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Clean up gh-pages branch
+      - name: Delete existing gh-pages branch
+        run: git push origin --delete gh-pages || echo "Branch doesn't exist"
+
+      - name: Create new gh-pages branch
         run: |
-          git checkout gh-pages
-          git rm -rf .
-          git commit -m "Clean up gh-pages branch"
-          git push origin gh-pages --force
-          git checkout main
+          git checkout -b gh-pages
+          git push origin gh-pages
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.6
