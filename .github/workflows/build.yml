@@ -37,18 +37,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Delete existing gh-pages branch
-        run: git push origin --delete gh-pages || echo "Branch doesn't exist"
-
-      - name: Create new gh-pages branch
-        run: |
-          git checkout -b gh-pages
-          git push origin gh-pages
-
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.6
         with:
           branch: gh-pages
           folder: build
-        env:
-          GH_TOKEN: ${{ secrets.TOKEN_ID }}
